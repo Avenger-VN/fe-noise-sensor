@@ -1,11 +1,13 @@
-.App{
+/* TODO: classname thống nhất 1 kiểu đặt tên */
+
+.App {
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
 }
 
-.AppHeader{
+.AppHeader {
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -13,7 +15,7 @@
   padding: 4px 40px 4px 12px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
-.AppFooter{
+.AppFooter {
   padding: 16px 0px;
   display: flex;
   justify-content: space-evenly;
@@ -21,54 +23,52 @@
   border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-.SideMenu{
+.SideMenu {
   width: 220px;
 }
-.SideMenuAndPageContent{
+.SideMenuAndPageContent {
   display: flex;
   flex: 1;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-.Home-Start{
+.Home-Start {
   width: 80vw;
   display: flex;
   justify-content: space-between;
   padding: 20px 10px 4px 0px;
 }
-.Home-Start-Content{
+.Home-Start-Content {
   padding: 20px 0px 20px 100px;
 }
 
-.Home-calendar{
+.Home-calendar {
   width: 300px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 8px;
 }
-.Home-table{
+.Home-table {
   padding-top: 20px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-.Home-table-content{
+.Home-table-content {
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 8px;
   width: 800px;
 }
 
-
-.Modal-input{
+.Modal-input {
   width: 370px;
   float: right;
 }
-.Modal-button{
+.Modal-button {
   width: 120px;
   float: right;
 }
 
-.modal-form-item form label{
+.modal-form-item form label {
   width: 100px;
 }
-
