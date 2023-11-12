@@ -1,9 +1,11 @@
-import { Typography } from "antd";
+import { Typography } from "antd"
 
-function Orders(){
-    return <div>
-        <Typography.Text>Orders</Typography.Text>
+function Orders() {
+  return (
+    <div>
+      <Typography.Text>Orders</Typography.Text>
     </div>
+  )
 }
 
-export default Orders;
+export default Orders

@@ -1,9 +1,13 @@
-import { Typography } from "antd";
+import { Typography } from "antd"
 
-function Statistical(){
-    return <div>
-        <Typography.Text>Statistical</Typography.Text>
+const { Text } = Typography
+
+function Statistical() {
+  return (
+    <div>
+      <Text>Statistical</Text>
     </div>
+  )
 }
 
-export default Statistical;
+export default Statistical

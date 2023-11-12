@@ -1,9 +1,11 @@
-import AppRoutes from "../AppRoutes";
+import AppRoutes from "../AppRoutes"
 
-function PageContent(){
-    return <div className="PageContent">
-        <AppRoutes />
+function PageContent() {
+  return (
+    <div className="PageContent">
+      <AppRoutes />
     </div>
+  )
 }
 
-export default PageContent;
+export default PageContent
