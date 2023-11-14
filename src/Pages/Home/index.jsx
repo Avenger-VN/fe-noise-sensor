@@ -13,7 +13,7 @@ function Home() {
     <div>
       <div className="Home-Start">
         <div className="Home-Start-Content">
-          <Typography.Title level={4}>Noise Pollution</Typography.Title>
+          <Typography.Title level={4}>Noise Pollutionh</Typography.Title>
           <Space direction="horizontal">
             <Statistical
               icon={

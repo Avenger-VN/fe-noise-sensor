@@ -72,3 +72,23 @@
 .modal-form-item form label {
   width: 100px;
 }
+
+.Title-CreateUser {
+  padding-left: 20px;
+}
+.All-AddUser-Form {
+  width: 1097px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+.AddUser-Form {
+  width: 470px;
+}
+
+.ant-form-item-required {
+  width: 100px;
+}
+.AddUser-Form-Btn-Save {
+  margin-left: 10px;
+}
