@@ -20,32 +20,46 @@ const AddUser = ({ form, onFinish }) => {
             rules={[
               {
                 required: true,
+                message: "Please enter your first name",
+              },
+              {
+                whitespace: true,
+                min: 3,
+                message: "Please enter more than 2 characters",
               },
             ]}
           >
-            <Input className="Modal-input" placeholder="First Name" />
+            <Input className="Modal-input" placeholder="Type your first name" />
           </Form.Item>
           <Form.Item
             rules={[
               {
                 required: true,
+                message: "Please enter your last name",
+              },
+              {
+                whitespace: true,
+                min: 3,
+                message: "Please enter more than 2 characters",
               },
             ]}
             name="lastName"
             label="Last Name"
           >
-            <Input className="Modal-input" placeholder="Last Name" />
+            <Input className="Modal-input" placeholder="Type your last name" />
           </Form.Item>
           <Form.Item
             rules={[
               {
                 required: true,
+                message: "Please enter your email name",
               },
+              { type: "email", message: "Please enter a valid email" },
             ]}
             name="email"
             label="Email"
           >
-            <Input className="Modal-input" placeholder="Email" />
+            <Input className="Modal-input" placeholder="Type your email" />
           </Form.Item>
           <Form.Item
             name="roleID"
@@ -53,10 +67,14 @@ const AddUser = ({ form, onFinish }) => {
             rules={[
               {
                 required: true,
+                message: "Please chose your role ID",
               },
             ]}
           >
-            <Select style={{ width: "370px", float: "right" }}>
+            <Select
+              style={{ width: "370px", float: "right" }}
+              placeholder="Chose role ID"
+            >
               <Option value="admin">Admin</Option>
               <Option value="customer">Customer</Option>
             </Select>
@@ -65,34 +83,55 @@ const AddUser = ({ form, onFinish }) => {
             rules={[
               {
                 required: true,
+                message: "Please enter your password",
+              },
+              {
+                whitespace: true,
+                min: 6,
+                message: "Please enter more than 5 characters",
               },
             ]}
             name="password"
             label="Password"
           >
-            <Input className="Modal-input" placeholder="Password" />
+            <Input className="Modal-input" placeholder="Type your password" />
           </Form.Item>
           <Form.Item
             rules={[
               {
                 required: true,
+                message: "Please enter your address",
+              },
+              {
+                whitespace: true,
+                min: 3,
+                message: "Please enter more than 2 characters",
               },
             ]}
             name="address"
             label="Address"
           >
-            <Input className="Modal-input" placeholder="Adress" />
+            <Input className="Modal-input" placeholder="Type your address" />
           </Form.Item>
           <Form.Item
             rules={[
               {
                 required: true,
+                message: "Please enter your phone number",
+              },
+              {
+                pattern: /^0\d{9}$/,
+                message:
+                  "Phone number must start with 0 and be followed by 9 digits!",
               },
             ]}
             name="phone"
             label="Phone"
           >
-            <Input className="Modal-input" placeholder="Phone Number" />
+            <Input
+              className="Modal-input"
+              placeholder="Type your phone number"
+            />
           </Form.Item>
 
           <Form.Item>

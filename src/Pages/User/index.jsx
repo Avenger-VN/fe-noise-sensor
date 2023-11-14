@@ -2,9 +2,10 @@ import React, { useState } from "react"
 import { Button } from "antd"
 import UserTable from "../../UserMethod/UserTable"
 import { Link } from "react-router-dom"
+import SourceDataUser from "../../UserMethod/Controllers"
 
 const User = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState(SourceDataUser)
 
   const handleDelete = (record) => {
     const filteredData = data.filter((item) => item !== record)

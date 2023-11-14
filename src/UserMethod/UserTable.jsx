@@ -1,5 +1,6 @@
 import React from "react"
 import { Table, Button, Popconfirm } from "antd"
+import { Link } from "react-router-dom"
 
 const UserTable = ({ data, handleDelete }) => {
   const columns = [
@@ -49,14 +50,19 @@ const UserTable = ({ data, handleDelete }) => {
       dataIndex: "action",
       key: "action",
       render: (space, record) => (
-        <Popconfirm
-          title="Are you sure to delete this task?"
-          onConfirm={() => handleDelete(record)}
-          okText="Yes"
-          cancelText="No"
-        >
-          <Button danger>Delete</Button>
-        </Popconfirm>
+        <div>
+          <Link to="/user/User-update">
+            <Button>Edit</Button>
+          </Link>
+          <Popconfirm
+            title="Are you sure to delete this task?"
+            onConfirm={() => handleDelete(record)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button danger>Delete</Button>
+          </Popconfirm>
+        </div>
       ),
     },
   ]
