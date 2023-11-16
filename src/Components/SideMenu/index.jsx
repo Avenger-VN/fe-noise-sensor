@@ -4,6 +4,7 @@ import {
   ShopOutlined,
   BarChartOutlined,
   UserOutlined,
+  AimOutlined,
 } from "@ant-design/icons"
 import { Menu } from "antd"
 import { useNavigate } from "react-router-dom"
@@ -35,6 +36,11 @@ function SideMenu() {
             label: "Orders",
             icon: <ShopOutlined />,
             key: "/Orders",
+          },
+          {
+            label: "Location",
+            icon: <AimOutlined />,
+            key: "/Location",
           },
           {
             label: "User",

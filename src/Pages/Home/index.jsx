@@ -84,7 +84,7 @@ function Home() {
       <div className="Home-table">
         <div className="Home-table-content">
           <div>
-            <Table dataSource={data} columns={columns} />
+            <Table dataSource={data} columns={columns} value="20" />
           </div>
         </div>
       </div>

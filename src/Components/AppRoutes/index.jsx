@@ -5,6 +5,7 @@ import Orders from "../../Pages/Orders"
 import User from "../../Pages/User"
 import UserAdd from "../../Pages/UserAll/UserAdd"
 import UserUpdate from "../../Pages/UserAll/UserUpdate"
+import Location from "../../Pages/Location"
 
 function AppRoutes() {
   return (
@@ -14,7 +15,9 @@ function AppRoutes() {
       <Route path="/orders" element={<Orders />}></Route>
       <Route path="/user" element={<User />}></Route>
       <Route path="/user/User-add" element={<UserAdd />}></Route>
-      <Route path="/user/User-update" element={<UserUpdate />}></Route>
+      <Route path="/user/:id" element={<UserUpdate />}></Route>
+      <Route path="/location" element={<Location />}></Route>
+      <Route path="/sensor" element={<Location />}></Route>
     </Routes>
   )
 }

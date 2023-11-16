@@ -89,6 +89,9 @@
 .ant-form-item-required {
   width: 100px;
 }
+.AddUser-Form-Btn-Back {
+  margin-left: 100px;
+}
 .AddUser-Form-Btn-Save {
   margin-left: 10px;
 }

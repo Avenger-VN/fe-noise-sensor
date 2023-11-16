@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 const { Title } = Typography
 
 const AddUser = ({ form, onFinish }) => {
+  const [passwordVisible, setPasswordVisible] = React.useState(false)
   return (
     <div>
       <div className="Title-CreateUser">
@@ -23,6 +24,10 @@ const AddUser = ({ form, onFinish }) => {
                 message: "Please enter your first name",
               },
               {
+                pattern: /^[a-zA-Z]+$/,
+                message: "Please enter a first name with only letters",
+              },
+              {
                 whitespace: true,
                 min: 3,
                 message: "Please enter more than 2 characters",
@@ -36,6 +41,10 @@ const AddUser = ({ form, onFinish }) => {
               {
                 required: true,
                 message: "Please enter your last name",
+              },
+              {
+                pattern: /^[a-zA-Z]+$/,
+                message: "Please enter a last name with only letters",
               },
               {
                 whitespace: true,
@@ -94,7 +103,14 @@ const AddUser = ({ form, onFinish }) => {
             name="password"
             label="Password"
           >
-            <Input className="Modal-input" placeholder="Type your password" />
+            <Input.Password
+              className="Modal-input"
+              placeholder="Type your password"
+              visibilityToggle={{
+                visible: passwordVisible,
+                onVisibleChange: setPasswordVisible,
+              }}
+            />
           </Form.Item>
           <Form.Item
             rules={[
@@ -136,11 +152,7 @@ const AddUser = ({ form, onFinish }) => {
 
           <Form.Item>
             <Link to="/user">
-              <Button
-                className="AddUser-Form-Btn-Back"
-                type="primary"
-                htmlType="submit"
-              >
+              <Button className="AddUser-Form-Btn-Back" htmlType="submit">
                 Back
               </Button>
             </Link>

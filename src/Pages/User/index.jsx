@@ -3,17 +3,22 @@ import { Button } from "antd"
 import UserTable from "../../UserMethod/UserTable"
 import { Link } from "react-router-dom"
 import SourceDataUser from "../../UserMethod/Controllers"
+import { Typography } from "antd"
 
+const { Title } = Typography
 const User = () => {
   const [data, setData] = useState(SourceDataUser)
 
   const handleDelete = (record) => {
-    const filteredData = data.filter((item) => item !== record)
+    const filteredData = data.filter((item) => item.id !== record.id)
     setData(filteredData)
   }
 
   return (
     <div>
+      <div>
+        <Title level={3}>User Details</Title>
+      </div>
       <div style={{ float: "right", padding: "20px 20px 20px 0px" }}>
         <Link to="/user/User-add">
           <Button>Add User</Button>

@@ -1,8 +1,7 @@
 import React from "react"
 import { Table, Button, Popconfirm } from "antd"
-import { Link } from "react-router-dom"
 
-const UserTable = ({ data, handleDelete }) => {
+const LocationTable = ({ data, handleDelete }) => {
   const columns = [
     // Các cột dữ liệu ở đây
     {
@@ -11,29 +10,9 @@ const UserTable = ({ data, handleDelete }) => {
       key: "id",
     },
     {
-      title: "First Name",
-      dataIndex: "firstName",
-      key: "firstName",
-    },
-    {
-      title: "Last Name",
-      dataIndex: "lastName",
-      key: "lastName",
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-    },
-    {
-      title: "Role ID",
-      dataIndex: "roleID",
-      key: "roleID",
-    },
-    {
-      title: "Password",
-      dataIndex: "password",
-      key: "password",
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
     },
     {
       title: "Address",
@@ -41,9 +20,14 @@ const UserTable = ({ data, handleDelete }) => {
       key: "address",
     },
     {
-      title: "Phone",
-      dataIndex: "phone",
-      key: "phone",
+      title: "Latitude",
+      dataIndex: "latitude",
+      key: "latitude",
+    },
+    {
+      title: "Longtitude",
+      dataIndex: "longtitude",
+      key: "longtitude",
     },
     {
       title: "Action",
@@ -51,9 +35,6 @@ const UserTable = ({ data, handleDelete }) => {
       key: "action",
       render: (space, record) => (
         <div>
-          <Link to={`/user/${record.id}`}>
-            <Button>Edit</Button>
-          </Link>
           <Popconfirm
             title="Are you sure to delete this task?"
             onConfirm={() => handleDelete(record)}
@@ -70,4 +51,4 @@ const UserTable = ({ data, handleDelete }) => {
   return <Table columns={columns} dataSource={data} rowKey="id" />
 }
 
-export default UserTable
+export default LocationTable

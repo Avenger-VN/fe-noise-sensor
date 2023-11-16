@@ -10,9 +10,9 @@ const columns = [
     key: "dba",
   },
   {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
+    title: "Location",
+    dataIndex: "location",
+    key: "location",
   },
   {
     title: "Notification",
