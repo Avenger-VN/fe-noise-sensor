@@ -1,7 +1,7 @@
 import { Button, Typography } from "antd"
 import { useState } from "react"
-import SourceDataSensor from "../../AllMethodPages/SensorMethod/Controllers"
-import SensorTable from "../../AllMethodPages/SensorMethod/SensorTable"
+import SourceDataSensor from "../../allMethodPages/sensorMethod/SensorControllers"
+import SensorTable from "../../allMethodPages/sensorMethod/SensorTable"
 import { Link } from "react-router-dom"
 
 const { Title } = Typography

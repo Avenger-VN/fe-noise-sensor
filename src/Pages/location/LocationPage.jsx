@@ -1,7 +1,7 @@
 import { Typography } from "antd"
-import LocationTable from "../../AllMethodPages/LocationMethod/LocationTable"
+import LocationTable from "../../allMethodPages/locationMethod/LocationTable"
 import { useState } from "react"
-import SourceDataLocation from "../../AllMethodPages/LocationMethod/Controllers"
+import SourceDataLocation from "../../allMethodPages/locationMethod/LocationControllers"
 
 const { Title } = Typography
 const Location = () => {

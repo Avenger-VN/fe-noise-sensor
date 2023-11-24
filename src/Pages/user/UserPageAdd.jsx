@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Form } from "antd"
-import AddUser from "../../../AllMethodPages/UserMethod/AddUser"
+import AddUser from "../../allMethodPages/userMethod/UserFormAdd"
 // import SourceDataUser from "../../UserMethod/Controllers"
 // import UserTable from "../../UserMethod/UserTable"
 const UserAdd = () => {

@@ -1,7 +1,7 @@
 import { Calendar, Card, Space, Statistic, Table, Typography } from "antd"
-import onPanelChange from "../../AllMethodPages/HomeMethod/Calendar/calendar"
-import data from "../../AllMethodPages/HomeMethod/Tables/userController"
-import columns from "../../AllMethodPages/HomeMethod/Tables/userModel"
+import onPanelChange from "../../allMethodPages/homeMethod/HomeCalendar"
+import data from "../../allMethodPages/homeMethod/HomeControllers"
+import columns from "../../allMethodPages/homeMethod/HomeModel"
 import {
   BarChartOutlined,
   NotificationOutlined,

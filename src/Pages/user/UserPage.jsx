@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { Button } from "antd"
-import UserTable from "../../AllMethodPages/UserMethod/UserTable"
+import UserTable from "../../allMethodPages/userMethod/UserTable"
 import { Link } from "react-router-dom"
-import SourceDataUser from "../../AllMethodPages/UserMethod/Controllers"
+import SourceDataUser from "../../allMethodPages/userMethod/UserControllers"
 import { Typography } from "antd"
 
 const { Title } = Typography

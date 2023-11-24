@@ -1,5 +1,5 @@
 import { useState } from "react"
-import AddSensor from "../../../AllMethodPages/SensorMethod/AddSensor"
+import AddSensor from "../../allMethodPages/sensorMethod/SensorFormAdd"
 import { Form } from "antd"
 
 const SensorAdd = () => {
