@@ -1,7 +1,7 @@
 import { Typography } from "antd"
-import LocationTable from "../../LocationMethod/LocationTable"
+import LocationTable from "../../AllMethodPages/LocationMethod/LocationTable"
 import { useState } from "react"
-import SourceDataLocation from "../../LocationMethod/Controllers"
+import SourceDataLocation from "../../AllMethodPages/LocationMethod/Controllers"
 
 const { Title } = Typography
 const Location = () => {
@@ -16,7 +16,9 @@ const Location = () => {
       <div>
         <Title level={3}>Location</Title>
       </div>
-      <LocationTable data={data} handleDelete={handleDelete} />
+      <div>
+        <LocationTable data={data} handleDelete={handleDelete} />
+      </div>
     </div>
   )
 }

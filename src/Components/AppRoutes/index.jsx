@@ -6,6 +6,9 @@ import User from "../../Pages/User"
 import UserAdd from "../../Pages/UserAll/UserAdd"
 import UserUpdate from "../../Pages/UserAll/UserUpdate"
 import Location from "../../Pages/Location"
+import Sensor from "../../Pages/Sensor"
+import SensorAdd from "../../Pages/SensorAll/SensorAdd"
+import SensorUpdate from "../../Pages/SensorAll/SensorUpdate"
 
 function AppRoutes() {
   return (
@@ -14,10 +17,12 @@ function AppRoutes() {
       <Route path="/statistical" element={<Statistical />}></Route>
       <Route path="/orders" element={<Orders />}></Route>
       <Route path="/user" element={<User />}></Route>
-      <Route path="/user/User-add" element={<UserAdd />}></Route>
+      <Route path="/user/user-add" element={<UserAdd />}></Route>
       <Route path="/user/:id" element={<UserUpdate />}></Route>
       <Route path="/location" element={<Location />}></Route>
-      <Route path="/sensor" element={<Location />}></Route>
+      <Route path="/sensor" element={<Sensor />}></Route>
+      <Route path="/sensor/sensor-add" element={<SensorAdd />}></Route>
+      <Route path="/sensor/:name" element={<SensorUpdate />}></Route>
     </Routes>
   )
 }

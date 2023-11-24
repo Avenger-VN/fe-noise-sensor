@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { Button } from "antd"
-import UserTable from "../../UserMethod/UserTable"
+import UserTable from "../../AllMethodPages/UserMethod/UserTable"
 import { Link } from "react-router-dom"
-import SourceDataUser from "../../UserMethod/Controllers"
+import SourceDataUser from "../../AllMethodPages/UserMethod/Controllers"
 import { Typography } from "antd"
 
 const { Title } = Typography
@@ -19,8 +19,8 @@ const User = () => {
       <div>
         <Title level={3}>User Details</Title>
       </div>
-      <div style={{ float: "right", padding: "20px 20px 20px 0px" }}>
-        <Link to="/user/User-add">
+      <div className="All-Add-style">
+        <Link to="/user/user-add">
           <Button>Add User</Button>
         </Link>
       </div>

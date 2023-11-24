@@ -5,6 +5,7 @@ import {
   BarChartOutlined,
   UserOutlined,
   AimOutlined,
+  DatabaseOutlined,
 } from "@ant-design/icons"
 import { Menu } from "antd"
 import { useNavigate } from "react-router-dom"
@@ -14,7 +15,7 @@ function SideMenu() {
   return (
     <div
       className="SideMenu"
-      style={{ height: 1000, borderRight: "1px solid rgba(0,0,0,0.15)" }}
+      style={{ height: 1400, borderRight: "1px solid rgba(0,0,0,0.15)" }}
     >
       <Menu
         onClick={(item) => {
@@ -35,22 +36,27 @@ function SideMenu() {
           {
             label: "Orders",
             icon: <ShopOutlined />,
-            key: "/Orders",
+            key: "/orders",
           },
           {
             label: "Location",
             icon: <AimOutlined />,
-            key: "/Location",
+            key: "/location",
+          },
+          {
+            label: "Sensor",
+            icon: <DatabaseOutlined />,
+            key: "/sensor",
           },
           {
             label: "User",
             icon: <UserOutlined />,
-            key: "/User",
+            key: "/user",
           },
           {
             label: "Log Out",
             icon: <LogoutOutlined />,
-            key: "/Logout",
+            key: "/logout",
             danger: "true",
           },
         ]}

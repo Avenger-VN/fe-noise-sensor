@@ -18,7 +18,7 @@ const columns = [
     title: "Notification",
     key: "notification",
     render: (payload) => {
-      return <p style={{ color: "red" }}>{payload.dba > 50 ? "Warning" : ""}</p>
+      return <p style={{ color: "red" }}>{payload.dba > 70 ? "Warning" : ""}</p>
     },
   },
 ]
