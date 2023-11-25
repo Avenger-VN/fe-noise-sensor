@@ -33,6 +33,11 @@
   align-items: flex-start;
 }
 
+.All-Add-style {
+  float: right;
+  padding: 0px 20px 20px 0px;
+}
+
 .Home-Start {
   width: 80vw;
   display: flex;
@@ -40,7 +45,7 @@
   padding: 20px 10px 4px 0px;
 }
 .Home-Start-Content {
-  padding: 20px 0px 20px 100px;
+  padding: 20px 0px 0px 100px;
 }
 
 .Home-calendar {
@@ -58,6 +63,9 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 8px;
   width: 800px;
+}
+.Home-Warning-ul {
+  margin: 0px;
 }
 
 .Modal-input {
@@ -88,6 +96,9 @@
 
 .ant-form-item-required {
   width: 100px;
+}
+.AddUser-Form-Btn-Back {
+  margin-left: 100px;
 }
 .AddUser-Form-Btn-Save {
   margin-left: 10px;
