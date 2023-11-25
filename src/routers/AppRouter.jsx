@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Home from "../pages/home/HomePage"
-import Statistical from "../pages/statistical"
+import Statistical from "../pages/statistical/StatiscalPage"
 import Orders from "../pages/orders/OrderPage"
 import User from "../pages/user/UserPage"
 import UserAdd from "../pages/user/UserPageAdd"
