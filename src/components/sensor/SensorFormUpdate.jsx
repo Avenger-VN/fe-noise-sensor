@@ -4,14 +4,31 @@ import { Typography } from "antd"
 import { Link } from "react-router-dom"
 const { Title } = Typography
 
-const AddFormSensor = ({ form, onFinish, data, setData }) => {
+const UpdateSensor = ({ form, onFinish, data, setData }) => {
   return (
     <div>
       <div className="Title-CreateUser">
-        <Title level={3}>Create Sensor</Title>
+        <Title level={3}>Update Sensor</Title>
       </div>
       <div className="All-AddUser-Form">
         <Form className="AddUser-Form" form={form} onFinish={onFinish}>
+          <Form.Item
+            name="id"
+            label="ID"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your id",
+              },
+            ]}
+          >
+            <Input
+              name="id"
+              className="Modal-input"
+              placeholder="Type your id"
+              value={data.id}
+            />
+          </Form.Item>
           <Form.Item
             name="name"
             label="Name"
@@ -99,4 +116,4 @@ const AddFormSensor = ({ form, onFinish, data, setData }) => {
   )
 }
 
-export default AddFormSensor
+export default UpdateSensor

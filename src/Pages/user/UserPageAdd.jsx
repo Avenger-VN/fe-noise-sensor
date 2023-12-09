@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Form } from "antd"
-import AddUser from "../../allMethodPages/userMethod/UserFormAdd"
+import AddFormUser from "../../components/user/UserFormAdd"
 // import SourceDataUser from "../../UserMethod/Controllers"
 // import UserTable from "../../UserMethod/UserTable"
 const UserAdd = () => {
@@ -14,7 +14,7 @@ const UserAdd = () => {
   return (
     <div>
       <div>
-        <AddUser form={form} onFinish={onFinish} />
+        <AddFormUser form={form} onFinish={onFinish} />
       </div>
     </div>
   )

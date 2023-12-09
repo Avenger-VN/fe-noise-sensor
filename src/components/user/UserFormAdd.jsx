@@ -6,7 +6,7 @@ import { Typography } from "antd"
 import { Link } from "react-router-dom"
 const { Title } = Typography
 
-const AddUser = ({ form, onFinish }) => {
+const AddFormUser = ({ form, onFinish }) => {
   const [passwordVisible, setPasswordVisible] = React.useState(false)
   return (
     <div>
@@ -151,18 +151,20 @@ const AddUser = ({ form, onFinish }) => {
           </Form.Item>
 
           <Form.Item>
-            <Link to="/user">
-              <Button className="AddUser-Form-Btn-Back" htmlType="submit">
-                Back
+            <div className="Btn-Back-Save">
+              <Button
+                className="AddUser-Form-Btn-Save"
+                type="primary"
+                htmlType="submit"
+              >
+                Save
               </Button>
-            </Link>
-            <Button
-              className="AddUser-Form-Btn-Save"
-              type="primary"
-              htmlType="submit"
-            >
-              Save
-            </Button>
+              <Link to="/user">
+                <Button className="AddUser-Form-Btn-Back" htmlType="submit">
+                  Back
+                </Button>
+              </Link>
+            </div>
           </Form.Item>
         </Form>
       </div>
@@ -170,4 +172,4 @@ const AddUser = ({ form, onFinish }) => {
   )
 }
 
-export default AddUser
+export default AddFormUser

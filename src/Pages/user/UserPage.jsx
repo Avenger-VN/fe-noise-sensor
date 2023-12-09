@@ -1,17 +1,29 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Button } from "antd"
-import UserTable from "../../allMethodPages/userMethod/UserTable"
+import UserTable from "../../components/user/UserTable"
 import { Link } from "react-router-dom"
-import SourceDataUser from "../../allMethodPages/userMethod/UserControllers"
 import { Typography } from "antd"
+import { PlusOutlined } from "@ant-design/icons"
+import axios from "axios"
 
 const { Title } = Typography
 const User = () => {
-  const [data, setData] = useState(SourceDataUser)
+  const [user, setUser] = useState([])
+  const fetchData = () => {
+    axios
+      .get("http://localhost:8888/api/v1/get-all-user?limit=10&page=1")
+      .then((res) => {
+        setUser(res.data.data.users)
+      })
+      .catch((err) => console.log(err))
+  }
 
+  useEffect(() => {
+    fetchData()
+  }, [])
   const handleDelete = (record) => {
-    const filteredData = data.filter((item) => item.id !== record.id)
-    setData(filteredData)
+    const filteredData = user.filter((item) => item.id !== record.id)
+    setUser(filteredData)
   }
 
   return (
@@ -21,10 +33,13 @@ const User = () => {
       </div>
       <div className="All-Add-style">
         <Link to="/user/user-add">
-          <Button>Add User</Button>
+          <Button type="primary">
+            <PlusOutlined />
+            Add User
+          </Button>
         </Link>
       </div>
-      <UserTable data={data} handleDelete={handleDelete} />
+      <UserTable data={user} handleDelete={handleDelete} />
     </div>
   )
 }
