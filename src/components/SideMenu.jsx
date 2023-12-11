@@ -1,11 +1,11 @@
 import {
   HomeOutlined,
   LogoutOutlined,
-  ShopOutlined,
   BarChartOutlined,
   UserOutlined,
   AimOutlined,
   DatabaseOutlined,
+  NotificationOutlined,
 } from "@ant-design/icons"
 import { Menu } from "antd"
 import { useNavigate } from "react-router-dom"
@@ -34,19 +34,24 @@ function SideMenu() {
             key: "/statistical",
           },
           {
-            label: "Orders",
-            icon: <ShopOutlined />,
-            key: "/orders",
-          },
-          {
             label: "Location",
             icon: <AimOutlined />,
             key: "/location",
           },
           {
+            label: "Alert",
+            icon: <NotificationOutlined />,
+            key: "/alert",
+          },
+          {
             label: "Sensor",
             icon: <DatabaseOutlined />,
             key: "/sensor",
+          },
+          {
+            label: "Sensor Data",
+            icon: <DatabaseOutlined />,
+            key: "/sensorData",
           },
           {
             label: "User",

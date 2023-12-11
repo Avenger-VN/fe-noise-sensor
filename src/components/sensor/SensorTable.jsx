@@ -6,6 +6,11 @@ const SensorTable = ({ data, handleDelete }) => {
   const columns = [
     // Các cột dữ liệu ở đây
     {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
       title: "Name",
       dataIndex: "name",
       key: "name",
@@ -26,7 +31,7 @@ const SensorTable = ({ data, handleDelete }) => {
       key: "action",
       render: (space, record) => (
         <div>
-          <Link to={`/sensor/${record.name}`}>
+          <Link to={`/sensor/${record.id}`}>
             <Button>Edit</Button>
           </Link>
           <Popconfirm
@@ -35,14 +40,25 @@ const SensorTable = ({ data, handleDelete }) => {
             okText="Yes"
             cancelText="No"
           >
-            <Button danger>Delete</Button>
+            <Button className="Table-Delete" danger>
+              Delete
+            </Button>
           </Popconfirm>
         </div>
       ),
     },
   ]
 
-  return <Table columns={columns} dataSource={data} rowKey="id" />
+  return (
+    <div className="Table-Style">
+      <Table
+        className="Table-with"
+        columns={columns}
+        dataSource={data}
+        rowKey="id"
+      />
+    </div>
+  )
 }
 
 export default SensorTable

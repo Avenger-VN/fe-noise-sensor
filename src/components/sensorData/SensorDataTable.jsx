@@ -2,34 +2,38 @@ import React from "react"
 import { Table, Button, Popconfirm } from "antd"
 import { Link } from "react-router-dom"
 
-const LocationTable = ({ data, handleDelete }) => {
+const SensorDataTable = ({ data, handleDelete }) => {
   const columns = [
     // Các cột dữ liệu ở đây
     {
-      title: "ID",
-      dataIndex: "id",
-      key: "id",
-      sorter: (a, b) => a.id - b.id,
+      title: "Sensor ID",
+      dataIndex: "sensorID",
+      key: "sensorID",
     },
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
+      title: "Time",
+      dataIndex: "time",
+      key: "time",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
+      title: "Type",
+      dataIndex: "type",
+      key: "type",
     },
     {
-      title: "Latitude",
-      dataIndex: "latitude",
-      key: "latitude",
+      title: "Location ID",
+      dataIndex: "locationID",
+      key: "locationID",
     },
     {
-      title: "Longitude",
-      dataIndex: "longitude",
-      key: "longitude",
+      title: "SerialNo",
+      dataIndex: "serialNo",
+      key: "serialNo",
+    },
+    {
+      title: "Field",
+      dataIndex: "field",
+      key: "field",
     },
     {
       title: "Action",
@@ -69,4 +73,4 @@ const LocationTable = ({ data, handleDelete }) => {
   )
 }
 
-export default LocationTable
+export default SensorDataTable

@@ -1,20 +1,21 @@
 import { Button, Typography } from "antd"
-import LocationTable from "../../components/location/LocationTable"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import { message } from "antd"
+import SensorDataTable from "../../components/sensorData/SensorDataTable"
 import { PlusOutlined } from "@ant-design/icons"
 
 const { Title } = Typography
 
-const Location = () => {
-  const [location, setLocation] = useState([])
+const SensorData = () => {
+  const [sensordata, setsensordata] = useState([])
+
   const fetchData = () => {
     axios
-      .get("http://localhost:8888/api/v1/get-all-location?limit=10&page=1")
+      .get("")
       .then((res) => {
-        setLocation(res.data.data.location)
+        setsensordata(res.data.data.location)
       })
       .catch((err) => console.log(err))
   }
@@ -25,29 +26,30 @@ const Location = () => {
 
   const handleDelete = (record) => {
     axios
-      .delete(`http://localhost:8888/api/v1/delete-location/${record.id}`)
+      .delete(`http://localhost:3030/locations/${record.id}`)
       .then(() => {
         message.success("Delete success")
         fetchData()
       })
       .catch((err) => console.log(err))
   }
+
   return (
     <div>
       <div>
-        <Title level={3}>Location Details</Title>
+        <Title level={3}>Sensor Data Details</Title>
       </div>
-      <div>
-        <Link className="All-Add-style" to="/location/location-add">
+      <div className="All-Add-style">
+        <Link to="/sensordata/sensordata-add">
           <Button type="primary">
             <PlusOutlined />
-            Add Location
+            Add Sensor Data
           </Button>
         </Link>
       </div>
-      <LocationTable data={location} handleDelete={handleDelete} />
+      <SensorDataTable data={sensordata} handleDelete={handleDelete} />
     </div>
   )
 }
 
-export default Location
+export default SensorData

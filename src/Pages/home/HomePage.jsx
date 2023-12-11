@@ -1,15 +1,33 @@
 import { Calendar, Card, Space, Statistic, Table, Typography } from "antd"
-import onPanelChange from "../../allMethodPages/homeMethod/HomeCalendar"
-import data from "../../allMethodPages/homeMethod/HomeControllers"
-import columns from "../../allMethodPages/homeMethod/HomeModel"
+import onPanelChange from "../../components/home/HomeCalendar"
+import data from "../../components/home/HomeControllers"
+import columns from "../../components/home/HomeModel"
 import {
   BarChartOutlined,
   NotificationOutlined,
   UserOutlined,
 } from "@ant-design/icons"
+import { Drawer } from "antd"
+import { useState } from "react"
 const { Text } = Typography
 
 function Home() {
+  const [drawerVisible, setDrawerVisible] = useState(false)
+
+  const showDrawer = () => {
+    setDrawerVisible(true)
+  }
+
+  const onCloseDrawer = () => {
+    setDrawerVisible(false)
+  }
+  const handleStatisticalClick = (title) => {
+    if (title === "Notification") {
+      showDrawer()
+    } else {
+      console.log("abc")
+    }
+  }
   return (
     <div>
       <div className="Home-Start">
@@ -45,6 +63,7 @@ function Home() {
               }
               title="Notification"
               value={1234}
+              onClick={() => handleStatisticalClick("Notification")}
             />
             <Statistical
               icon={
@@ -122,13 +141,33 @@ function Home() {
           </div>
         </div>
       </div>
+      <Drawer
+        title="Notification"
+        placement="right"
+        onClose={onCloseDrawer}
+        visible={drawerVisible}
+      >
+        <Typography.Title level={4}>To day</Typography.Title>
+        <p>12:05 Sensitive</p>
+        <p>13:00 Dangerous</p>
+        <p>14:20 Extremely dangerous</p>
+        <p>15:10 Sensitive</p>
+        <p>16:30 Dangerous</p>
+        <p>16:50 Extremely dangerous</p>
+        <p>17:05 Sensitive</p>
+        <p>18:00 Dangerous</p>
+        <p>22:15 Extremely dangerous</p>
+        <p>23:05 Sensitive</p>
+        <p>23:10 Dangerous</p>
+        <p>23:40 Extremely dangerous</p>
+      </Drawer>
     </div>
   )
 }
 
-function Statistical({ title, value, icon }) {
+function Statistical({ title, value, icon, onClick }) {
   return (
-    <Card>
+    <Card onClick={onClick} style={{ cursor: "pointer" }}>
       <Space direction="horizontal">
         {icon}
         <Statistic title={title} value={value} />
