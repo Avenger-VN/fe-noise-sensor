@@ -56,7 +56,7 @@
     ]
   },
   "engines": {
-    "node": "v18.12.1"
+    "node": ">=18.12"
   },
   "lint-staged": {
     "*.{js,jsx}": [
