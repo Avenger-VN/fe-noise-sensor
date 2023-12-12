@@ -4,14 +4,14 @@ import UserTable from "../../components/user/UserTable"
 import { Link } from "react-router-dom"
 import { Typography } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
-import axios from "axios"
+import { getUsers } from "../../api"
 
 const { Title } = Typography
-const User = () => {
+export default function User() {
   const [user, setUser] = useState([])
+
   const fetchData = () => {
-    axios
-      .get("http://localhost:8888/api/v1/get-all-user?limit=10&page=1")
+    getUsers({ limit: 1, page: 1 })
       .then((res) => {
         setUser(res.data.data.users)
       })
@@ -21,6 +21,7 @@ const User = () => {
   useEffect(() => {
     fetchData()
   }, [])
+
   const handleDelete = (record) => {
     const filteredData = user.filter((item) => item.id !== record.id)
     setUser(filteredData)
@@ -43,5 +44,3 @@ const User = () => {
     </div>
   )
 }
-
-export default User

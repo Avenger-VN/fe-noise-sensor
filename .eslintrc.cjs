@@ -6,6 +6,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   parserOptions: {
     sourceType: "module",
@@ -14,7 +15,7 @@ module.exports = {
     },
   },
   ignorePatterns: ["dist", ".eslintrc.cjs"],
-  plugins: ["react"],
+  plugins: ["react", "jsx-a11y"],
   rules: {
     "react/react-in-jsx-scope": 0,
     "react/prop-types": 0

@@ -4,29 +4,31 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "5.2.6",
-    "antd": "5.10.1",
-    "axios": "1.6.1",
-    "chart.js": "^4.4.0",
-    "faker": "5.5.3",
+    "antd": "5.12.2",
+    "axios": "1.6.2",
+    "chart.js": "4.4.1",
+    "faker": "6.6.6",
     "json-server": "0.17.4",
+    "query-string": "^8.1.0",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "6.17.0",
+    "react-router-dom": "6.20.1",
     "react-scripts": "5.0.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "5.17.0",
-    "@testing-library/react": "13.4.0",
-    "@testing-library/user-event": "13.5.0",
-    "eslint": "8.52.0",
-    "eslint-config-prettier": "9.0.0",
+    "@testing-library/jest-dom": "6.1.5",
+    "@testing-library/react": "14.1.2",
+    "@testing-library/user-event": "14.5.1",
+    "eslint": "8.55.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-jsx-a11y": "6.8.0",
     "eslint-plugin-prettier": "5.0.1",
-    "eslint-plugin-react-refresh": "0.4.4",
+    "eslint-plugin-react-refresh": "0.4.5",
     "husky": "8.0.3",
-    "lint-staged": "15.0.2",
-    "prettier": "3.0.3",
-    "web-vitals": "2.1.4"
+    "lint-staged": "15.2.0",
+    "prettier": "3.1.1",
+    "web-vitals": "3.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,7 +37,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint . --fix",
     "format": "prettier --write",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "precommit": "lint-staged"
   },
   "eslintConfig": {
     "extends": [
@@ -59,9 +62,9 @@
     "node": ">=18.12"
   },
   "lint-staged": {
+    "*.{js,jsx,css,md,html,json}": "pnpm run format",
     "*.{js,jsx}": [
       "pnpm run lint"
-    ],
-    "*.{js,jsx,css,md,html,json}": "pnpm run format"
+    ]
   }
 }

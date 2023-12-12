@@ -10,8 +10,8 @@ import {
   Legend,
 } from "chart.js"
 import { Bar } from "react-chartjs-2"
-import faker from "faker"
 import { Card } from "antd"
+
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 function Statistical() {
   const options = {
@@ -45,12 +45,12 @@ function Statistical() {
     datasets: [
       {
         label: "Date",
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 31 })),
+        data: labels.map(() => Math.random()),
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
       {
         label: "dB(A)",
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 120 })),
+        data: labels.map(() => Math.random()),
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],

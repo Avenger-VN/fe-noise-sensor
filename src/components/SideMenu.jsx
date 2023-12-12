@@ -15,7 +15,7 @@ function SideMenu() {
   return (
     <div
       className="SideMenu"
-      style={{ height: 1400, borderRight: "1px solid rgba(0,0,0,0.15)" }}
+      style={{ borderRight: "1px solid rgba(0,0,0,0.15)" }}
     >
       <Menu
         onClick={(item) => {

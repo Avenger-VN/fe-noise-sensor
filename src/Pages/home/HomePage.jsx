@@ -11,7 +11,7 @@ import { Drawer } from "antd"
 import { useState } from "react"
 const { Text } = Typography
 
-function Home() {
+export default function Home() {
   const [drawerVisible, setDrawerVisible] = useState(false)
 
   const showDrawer = () => {
@@ -175,5 +175,3 @@ function Statistical({ title, value, icon, onClick }) {
     </Card>
   )
 }
-
-export default Home

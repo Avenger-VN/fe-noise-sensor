@@ -4,8 +4,8 @@ import { Typography, Space, Badge } from "antd"
 function AppHeader() {
   return (
     <div className="AppHeader">
-      <Typography.Title level={2} style={{ paddingLeft: 14 }}>
-        Noise Pollution
+      <Typography.Title level={2} style={{ margin: 0 }}>
+        Noise Monitor
       </Typography.Title>
       <Space>
         <Badge count="4">
