@@ -6,7 +6,7 @@ import { Typography } from "antd"
 import { Link } from "react-router-dom"
 const { Title } = Typography
 
-const AddFormUser = ({ form, onFinish }) => {
+const AddFormUser = ({ form, onFinish, setInputData, inputData }) => {
   const [passwordVisible, setPasswordVisible] = React.useState(false)
   return (
     <div>
@@ -34,7 +34,14 @@ const AddFormUser = ({ form, onFinish }) => {
               },
             ]}
           >
-            <Input className="Modal-input" placeholder="Type your first name" />
+            <Input
+              className="Modal-input"
+              placeholder="Type your first name"
+              onChange={(e) =>
+                setInputData({ ...inputData, firstName: e.target.value })
+              }
+              firstName="firstName"
+            />
           </Form.Item>
           <Form.Item
             rules={[
@@ -55,7 +62,14 @@ const AddFormUser = ({ form, onFinish }) => {
             name="lastName"
             label="Last Name"
           >
-            <Input className="Modal-input" placeholder="Type your last name" />
+            <Input
+              className="Modal-input"
+              placeholder="Type your last name"
+              onChange={(e) =>
+                setInputData({ ...inputData, lastName: e.target.value })
+              }
+              lastName="lastName"
+            />
           </Form.Item>
           <Form.Item
             rules={[
@@ -68,7 +82,14 @@ const AddFormUser = ({ form, onFinish }) => {
             name="email"
             label="Email"
           >
-            <Input className="Modal-input" placeholder="Type your email" />
+            <Input
+              className="Modal-input"
+              placeholder="Type your email"
+              onChange={(e) =>
+                setInputData({ ...inputData, email: e.target.value })
+              }
+              email="email"
+            />
           </Form.Item>
           <Form.Item
             name="roleID"
@@ -83,9 +104,13 @@ const AddFormUser = ({ form, onFinish }) => {
             <Select
               style={{ width: "370px", float: "right" }}
               placeholder="Chose role ID"
+              onChange={(value) =>
+                setInputData({ ...inputData, roleID: value })
+              }
+              roleID="roleID"
             >
-              <Option value="admin">Admin</Option>
-              <Option value="customer">Customer</Option>
+              <Option value="1">1</Option>
+              <Option value="2">2</Option>
             </Select>
           </Form.Item>
           <Form.Item
@@ -110,6 +135,10 @@ const AddFormUser = ({ form, onFinish }) => {
                 visible: passwordVisible,
                 onVisibleChange: setPasswordVisible,
               }}
+              onChange={(e) =>
+                setInputData({ ...inputData, password: e.target.value })
+              }
+              password="password"
             />
           </Form.Item>
           <Form.Item
@@ -127,7 +156,14 @@ const AddFormUser = ({ form, onFinish }) => {
             name="address"
             label="Address"
           >
-            <Input className="Modal-input" placeholder="Type your address" />
+            <Input
+              className="Modal-input"
+              placeholder="Type your address"
+              onChange={(e) =>
+                setInputData({ ...inputData, address: e.target.value })
+              }
+              address="address"
+            />
           </Form.Item>
           <Form.Item
             rules={[
@@ -147,6 +183,10 @@ const AddFormUser = ({ form, onFinish }) => {
             <Input
               className="Modal-input"
               placeholder="Type your phone number"
+              onChange={(e) =>
+                setInputData({ ...inputData, phone: e.target.value })
+              }
+              phone="phone"
             />
           </Form.Item>
 

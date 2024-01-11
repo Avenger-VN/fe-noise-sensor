@@ -1,24 +1,27 @@
 import { useState } from "react"
 import AddFormSensor from "../../components/sensor/SensorFormAdd"
-import { Form, message } from "antd"
-import axios from "axios"
+import { Form } from "antd"
 import { useNavigate } from "react-router-dom"
+import { createSensor } from "../../api/path"
+import { notification } from "antd"
 
 const SensorAdd = () => {
   const [inputData, setInputData] = useState([])
   const [form] = Form.useForm()
-  const nav = useNavigate()
+  const navigate = useNavigate()
   const onFinish = () => {
-    axios
-      .post("http://localhost:8888/api/v1/create-sensor", inputData)
+    createSensor("create-sensor", inputData)
       .then(() => {
-        message.success("Create success")
-        nav("/sensor")
+        notification.success({
+          message: "Create success",
+          duration: 1,
+          onClose: () => {
+            navigate("/sensor")
+          },
+        })
       })
       .catch((err) => {
         console.error("Error creating data:", err)
-        console.log("Response data:", err.response.data)
-        console.log("Status code:", err.response.status)
       })
   }
   return (

@@ -1,18 +1,17 @@
 import { Button, Typography } from "antd"
 import LocationTable from "../../components/location/LocationTable"
 import { useEffect, useState } from "react"
-import axios from "axios"
 import { Link } from "react-router-dom"
-import { message } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
+import { deleteLocation, getLocations } from "../../api"
+import { notification } from "antd"
 
 const { Title } = Typography
 
 const Location = () => {
   const [location, setLocation] = useState([])
   const fetchData = () => {
-    axios
-      .get("http://localhost:8888/api/v1/get-all-location?limit=10&page=1")
+    getLocations({ limit: 10, page: 1 })
       .then((res) => {
         setLocation(res.data.data.location)
       })
@@ -22,12 +21,13 @@ const Location = () => {
   useEffect(() => {
     fetchData()
   }, [])
-
   const handleDelete = (record) => {
-    axios
-      .delete(`http://localhost:8888/api/v1/delete-location/${record.id}`)
+    deleteLocation(`${record.id}`)
       .then(() => {
-        message.success("Delete success")
+        notification.success({
+          message: "Delete success",
+          duration: 1,
+        })
         fetchData()
       })
       .catch((err) => console.log(err))

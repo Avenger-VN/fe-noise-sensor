@@ -1,19 +1,18 @@
-import { Button, Typography, message } from "antd"
+import { Button, Typography } from "antd"
 import { useEffect, useState } from "react"
 // import SourceDataSensor from "../../components/sensor/SensorControllers"
 import SensorTable from "../../components/sensor/SensorTable"
 import { Link } from "react-router-dom"
-import axios from "axios"
 import { PlusOutlined } from "@ant-design/icons"
+import { deleteSensor, getSensors } from "../../api"
+import { notification } from "antd"
 
 const { Title } = Typography
 
 const Sensor = () => {
   const [sensor, setSensor] = useState([])
-
   const fecthData = () => {
-    axios
-      .get("http://localhost:8888/api/v1/get-all-sensor?limit=10&page=1")
+    getSensors({ limit: 10, page: 1 })
       .then((res) => setSensor(res.data.data.sensor))
       .catch((err) => console.log(err))
   }
@@ -21,12 +20,13 @@ const Sensor = () => {
   useEffect(() => {
     fecthData()
   }, [])
-
   const handleDelete = (record) => {
-    axios
-      .delete(`http://localhost:8888/api/v1/delete-sensor/${record.id}`)
+    deleteSensor(`${record.id}`)
       .then(() => {
-        message.success("Delete success")
+        notification.success({
+          message: "Delete success",
+          duration: 1,
+        })
         fecthData()
       })
       .catch((err) => console.log(err))

@@ -15,6 +15,7 @@ import AlertAdd from "../../src/pages/alert/AlertPageAdd"
 import SensorData from "../../src/pages/sensorData/SensorDataPage"
 import SensorDataAdd from "../../src/pages/sensorData/SensorDataPageAdd"
 import AlertUpdate from "../../src/pages/alert/AlertPageUpdate"
+import SensorDataPageUpdate from "../pages/sensorData/SensorDataPageUpdate"
 
 function AppRoutes() {
   return (
@@ -32,8 +33,10 @@ function AppRoutes() {
       <Route path="/alert/alert-add" element={<AlertAdd />}></Route>
       <Route path="/sensor" element={<Sensor />}></Route>
       <Route path="/sensor/sensor-add" element={<SensorAdd />}></Route>
-      <Route path="/sensor/:name" element={<SensorUpdate />}></Route>
+      <Route path="/sensor/:id" element={<SensorUpdate />}></Route>
       <Route path="/sensordata" element={<SensorData />}></Route>
+      <Route path="/sensordata/:id" element={<SensorDataPageUpdate />}></Route>
+
       <Route
         path="/sensordata/sensordata-add"
         element={<SensorDataAdd />}

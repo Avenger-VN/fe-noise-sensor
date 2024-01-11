@@ -31,11 +31,6 @@ const UserTable = ({ data, handleDelete }) => {
       key: "roleID",
     },
     {
-      title: "Password",
-      dataIndex: "password",
-      key: "password",
-    },
-    {
       title: "Address",
       dataIndex: "address",
       key: "address",

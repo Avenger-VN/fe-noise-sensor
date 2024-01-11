@@ -1,22 +1,58 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Form, Input, Button } from "antd"
 import { Select } from "antd"
 import { Option } from "antd/es/mentions"
 import { Typography } from "antd"
 import { Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { getUser, update } from "../../api"
+import { notification } from "antd"
 
 const { Title } = Typography
 const UserUpdate = () => {
-  const [passwordVisible, setPasswordVisible] = React.useState(false)
+  const [user, setUser] = useState([])
+  const { id } = useParams()
+  const navigate = useNavigate()
+  useEffect(() => {
+    getUser(id)
+      .then((res) => {
+        setUser(res.data.data)
+      })
+      .catch((err) => console.log(err))
+  }, [id])
+  function onUpdate() {
+    update("update-user", user)
+      .then(() => {
+        notification.success({
+          message: "Update success",
+          duration: 1,
+          onClose: () => {
+            navigate("/user")
+          },
+        })
+      })
+      .catch((err) => console.log(err))
+  }
   return (
     <div>
       <div className="Title-CreateUser">
         <Title level={3}>Edit User</Title>
       </div>
       <div className="All-AddUser-Form">
-        <Form className="AddUser-Form">
+        <Form className="AddUser-Form" onFinish={onUpdate}>
           <Form.Item
-            name="firstName"
+            label="ID"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your latitude",
+              },
+            ]}
+          >
+            <Input name="id" value={user.id} className="Modal-input" disabled />
+          </Form.Item>
+          <Form.Item
             label="First Name"
             rules={[
               {
@@ -34,7 +70,13 @@ const UserUpdate = () => {
               },
             ]}
           >
-            <Input className="Modal-input" placeholder="Type your first name" />
+            <Input
+              className="Modal-input"
+              name="firstName"
+              placeholder="Type your first name"
+              value={user.firstName}
+              onChange={(e) => setUser({ ...user, firstName: e.target.value })}
+            />
           </Form.Item>
           <Form.Item
             rules={[
@@ -52,10 +94,15 @@ const UserUpdate = () => {
                 message: "Please enter more than 2 characters",
               },
             ]}
-            name="lastName"
             label="Last Name"
           >
-            <Input className="Modal-input" placeholder="Type your last name" />
+            <Input
+              className="Modal-input"
+              name="lastName"
+              placeholder="Type your last name"
+              value={user.lastName}
+              onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+            />
           </Form.Item>
           <Form.Item
             rules={[
@@ -65,13 +112,17 @@ const UserUpdate = () => {
               },
               { type: "email", message: "Please enter a valid email" },
             ]}
-            name="email"
             label="Email"
           >
-            <Input className="Modal-input" placeholder="Type your email" />
+            <Input
+              className="Modal-input"
+              name="email"
+              value={user.email}
+              placeholder="Type your email"
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+            />
           </Form.Item>
           <Form.Item
-            name="roleID"
             label="Role ID"
             rules={[
               {
@@ -81,37 +132,16 @@ const UserUpdate = () => {
             ]}
           >
             <Select
+              name="roleID"
               style={{ width: "370px", float: "right" }}
               placeholder="Chose role ID"
+              value={user.roleID}
             >
               <Option value="admin">Admin</Option>
               <Option value="customer">Customer</Option>
             </Select>
           </Form.Item>
-          <Form.Item
-            rules={[
-              {
-                required: true,
-                message: "Please enter your password",
-              },
-              {
-                whitespace: true,
-                min: 6,
-                message: "Please enter more than 5 characters",
-              },
-            ]}
-            name="password"
-            label="Password"
-          >
-            <Input.Password
-              className="Modal-input"
-              placeholder="Type your password"
-              visibilityToggle={{
-                visible: passwordVisible,
-                onVisibleChange: setPasswordVisible,
-              }}
-            />
-          </Form.Item>
+
           <Form.Item
             rules={[
               {
@@ -124,10 +154,15 @@ const UserUpdate = () => {
                 message: "Please enter more than 2 characters",
               },
             ]}
-            name="address"
             label="Address"
           >
-            <Input className="Modal-input" placeholder="Type your address" />
+            <Input
+              className="Modal-input"
+              placeholder="Type your address"
+              name="address"
+              value={user.address}
+              onChange={(e) => setUser({ ...user, address: e.target.value })}
+            />
           </Form.Item>
           <Form.Item
             rules={[
@@ -141,21 +176,18 @@ const UserUpdate = () => {
                   "Phone number must start with 0 and be followed by 9 digits!",
               },
             ]}
-            name="phone"
             label="Phone"
           >
             <Input
               className="Modal-input"
               placeholder="Type your phone number"
+              name="phone"
+              value={user.phone}
+              onChange={(e) => setUser({ ...user, phone: e.target.value })}
             />
           </Form.Item>
 
-          <Form.Item>
-            <Link to="/user">
-              <Button className="AddUser-Form-Btn-Back" htmlType="submit">
-                Back
-              </Button>
-            </Link>
+          <div className="Btn-Back-Save">
             <Button
               className="AddUser-Form-Btn-Save"
               type="primary"
@@ -163,7 +195,10 @@ const UserUpdate = () => {
             >
               Save
             </Button>
-          </Form.Item>
+            <Link to={"/user"}>
+              <Button className="AddUser-Form-Btn-Back">Back</Button>
+            </Link>
+          </div>
         </Form>
       </div>
     </div>
