@@ -16,6 +16,11 @@ const SensorDataTable = ({ data, handleDelete }) => {
       key: "time",
     },
     {
+      title: "Value",
+      dataIndex: "value",
+      key: "value",
+    },
+    {
       title: "Type",
       dataIndex: "type",
       key: "type",

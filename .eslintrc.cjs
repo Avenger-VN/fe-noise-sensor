@@ -18,7 +18,7 @@ module.exports = {
   plugins: ["react", "jsx-a11y"],
   rules: {
     "react/react-in-jsx-scope": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
   },
   // **`0`** = off, **`1`** = warn, **`2`** = error
 }

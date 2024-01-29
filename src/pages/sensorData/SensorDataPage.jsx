@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import { message } from "antd"
 import SensorDataTable from "../../components/sensorData/SensorDataTable"
 import { PlusOutlined } from "@ant-design/icons"
+import { getSensorData } from "../../api/sensor-data"
 
 const { Title } = Typography
 
@@ -12,10 +13,9 @@ const SensorData = () => {
   const [sensordata, setsensordata] = useState([])
 
   const fetchData = () => {
-    axios
-      .get("")
+    getSensorData()
       .then((res) => {
-        setsensordata(res.data.data.location)
+        setsensordata(res.data.data)
       })
       .catch((err) => console.log(err))
   }
