@@ -1,37 +1,35 @@
 import { Button, Typography } from "antd"
 import { useEffect, useState } from "react"
-import axios from "axios"
 import { Link } from "react-router-dom"
-import { message } from "antd"
 import AlertTable from "../../components/alert/AlertTable"
 import { PlusOutlined } from "@ant-design/icons"
+import { deleteAlert, getAlerts } from "../../api"
+import { notification } from "antd"
 
 const { Title } = Typography
 
 const Alert = () => {
   const [alert, setAlert] = useState([])
 
-  const fetchData = () => {
-    axios
-      .get("http://localhost:8888/api/v1/get-all-alert?limit=10&page=1")
-      .then((res) => {
-        setAlert(res.data.data.alert)
-      })
-      .catch((err) => console.log(err))
+  const fetchData = async () => {
+    try {
+      const res = await getAlerts({ limit: 10, page: 1 })
+      setAlert(res.data.data.alert)
+    } catch (err) {
+      console.log()
+    }
   }
 
   useEffect(() => {
     fetchData()
   }, [])
-
-  const handleDelete = (record) => {
-    axios
-      .delete(`http://localhost:8888/api/v1/delete-alert/${record.id}`)
-      .then(() => {
-        message.success("Delete success")
-        fetchData()
-      })
-      .catch((err) => console.log(err))
+  const handleDelete = async (record) => {
+    await deleteAlert(`${record.id}`)
+    notification.success({
+      message: "Delete success",
+      duration: 1,
+    })
+    fetchData()
   }
 
   return (

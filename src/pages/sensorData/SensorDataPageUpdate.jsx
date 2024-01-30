@@ -1,18 +1,27 @@
+import { useEffect, useState } from "react"
 import { Button, Form, Input, Typography } from "antd"
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { createSensorData } from "../../api/path"
+import { useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { getSensorData, update } from "../../api/path"
 import { notification } from "antd"
 const { Title } = Typography
-
-function SensorDataAdd() {
-  const [inputData, setInputData] = useState([])
+const SensorDataPageUpdate = () => {
+  const [sensorData, setSensorData] = useState([])
+  const { id } = useParams()
   const navigate = useNavigate()
-  function onFinish() {
-    createSensorData("create-sensor-data", inputData)
+  useEffect(() => {
+    getSensorData(id)
+      .then((res) => {
+        setSensorData(res.data.data)
+      })
+      .catch((err) => console.log(err))
+  }, [id])
+  function onUpdate() {
+    update("update-sensor-data", sensorData)
       .then(() => {
         notification.success({
-          message: "Create success",
+          message: "Update success",
           duration: 1,
           onClose: () => {
             navigate("/sensordata")
@@ -21,17 +30,31 @@ function SensorDataAdd() {
       })
       .catch((err) => console.log(err))
   }
-
   return (
     <div>
       <div className="Title-CreateUser">
-        <Title level={3}>Create Sensor Data</Title>
+        <Title level={3}>Update Sensor Data</Title>
       </div>
       <div className="All-AddUser-Form">
-        <Form onFinish={onFinish}>
+        <Form onFinish={onUpdate}>
+          <Form.Item
+            label="ID"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your latitude",
+              },
+            ]}
+          >
+            <Input
+              name="id"
+              value={sensorData.id}
+              className="Modal-input"
+              disabled
+            />
+          </Form.Item>
           <Form.Item
             label="Sensor ID"
-            name="sensorID"
             rules={[
               {
                 required: true,
@@ -45,15 +68,15 @@ function SensorDataAdd() {
           >
             <Input
               sensorID="sensorID"
+              value={sensorData.sensorID}
               onChange={(e) =>
-                setInputData({ ...inputData, sensorID: e.target.value })
+                setSensorData({ ...sensorData, sensorID: e.target.value })
               }
               className="Modal-input"
             />
           </Form.Item>
           <Form.Item
             label="Time"
-            name="time"
             rules={[
               {
                 required: true,
@@ -63,15 +86,15 @@ function SensorDataAdd() {
           >
             <Input
               time="time"
+              value={sensorData.time}
               onChange={(e) =>
-                setInputData({ ...inputData, time: e.target.value })
+                setSensorData({ ...sensorData, time: e.target.value })
               }
               className="Modal-input"
             />
           </Form.Item>
           <Form.Item
             label="Type"
-            name="type"
             rules={[
               {
                 required: true,
@@ -81,15 +104,15 @@ function SensorDataAdd() {
           >
             <Input
               type="type"
+              value={sensorData.type}
               onChange={(e) =>
-                setInputData({ ...inputData, type: e.target.value })
+                setSensorData({ ...sensorData, type: e.target.value })
               }
               className="Modal-input"
             />
           </Form.Item>
           <Form.Item
             label="Location ID"
-            name="locationID"
             rules={[
               {
                 required: true,
@@ -103,15 +126,15 @@ function SensorDataAdd() {
           >
             <Input
               locationID="locationID"
+              value={sensorData.locationID}
               onChange={(e) =>
-                setInputData({ ...inputData, locationID: e.target.value })
+                setSensorData({ ...sensorData, locationID: e.target.value })
               }
               className="Modal-input"
             />
           </Form.Item>
           <Form.Item
             label="SerialNo"
-            name="serialNo"
             rules={[
               {
                 required: true,
@@ -121,15 +144,15 @@ function SensorDataAdd() {
           >
             <Input
               serialNo="serialNo"
+              value={sensorData.serialNo}
               onChange={(e) =>
-                setInputData({ ...inputData, serialNo: e.target.value })
+                setSensorData({ ...sensorData, serialNo: e.target.value })
               }
               className="Modal-input"
             />
           </Form.Item>
           <Form.Item
             label="Field"
-            name="field"
             rules={[
               {
                 required: true,
@@ -139,8 +162,9 @@ function SensorDataAdd() {
           >
             <Input
               field="field"
+              value={sensorData.field}
               onChange={(e) =>
-                setInputData({ ...inputData, field: e.target.value })
+                setSensorData({ ...sensorData, field: e.target.value })
               }
               className="Modal-input"
             />
@@ -162,4 +186,4 @@ function SensorDataAdd() {
     </div>
   )
 }
-export default SensorDataAdd
+export default SensorDataPageUpdate

@@ -1,17 +1,22 @@
-import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import AlertFormAdd from "../../components/alert/AlertFormAdd"
+import { createAlert } from "../../api/path"
+import { notification } from "antd"
 
 function AlertAdd() {
   const [inputData, setInputData] = useState([])
   const navigate = useNavigate()
   function onFinish() {
-    axios
-      .post("http://localhost:8888/api/v1/create-alert", inputData)
+    createAlert("create-alert", inputData)
       .then(() => {
-        alert("Data succes")
-        navigate("/alert")
+        notification.success({
+          message: "Create success",
+          duration: 1,
+          onClose: () => {
+            navigate("/alert")
+          },
+        })
       })
       .catch((err) => console.log(err))
   }

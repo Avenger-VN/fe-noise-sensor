@@ -1,34 +1,34 @@
 import { Button, Form, Input, Typography } from "antd"
-import axios from "axios"
 import { useEffect, useState } from "react"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
+import { getLocation, update } from "../../api/path"
+import { notification } from "antd"
 const { Title } = Typography
 
 function Update() {
   const { id } = useParams()
-  const [location, setLocation] = useState({
-    id: "",
-    name: "",
-    address: "",
-    latitude: "",
-    longtitude: "",
-  })
-  const navi = useNavigate()
+  const [location, setLocation] = useState({})
+
+  const navigate = useNavigate()
   useEffect(() => {
-    axios
-      .get(
-        `http://localhost:8888/api/v1/get-all-location?limit=10&page=1/${id}`,
-      )
-      .then((res) => setLocation(res.data.data.location))
+    getLocation(id)
+      .then((res) => {
+        setLocation(res.data.data)
+      })
       .catch((err) => console.log(err))
   }, [id])
 
   function onUpdate() {
-    axios
-      .put(`http://localhost:8888/api/v1/update-location/${id}`, location)
+    update("update-location", location)
       .then(() => {
-        alert("data update success")
-        navi("/location")
+        notification.success({
+          message: "Update success",
+          duration: 1,
+          onClose: () => {
+            navigate("/location")
+          },
+        })
       })
       .catch((err) => console.log(err))
   }
@@ -40,15 +40,41 @@ function Update() {
       </div>
       <div className="All-AddUser-Form">
         <Form onFinish={onUpdate}>
-          <Form.Item label="Id">
+          <Form.Item
+            label="ID"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your latitude",
+              },
+            ]}
+          >
             <Input
               name="id"
               value={location.id}
-              readOnly
+              onChange={(e) => setLocation({ ...location, id: e.target.value })}
               className="Modal-input"
+              disabled
             />
           </Form.Item>
-          <Form.Item label="Name">
+          <Form.Item
+            label="Name"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your name",
+              },
+              {
+                pattern: /^[a-zA-Z]+$/,
+                message: "Please enter a name with only letters",
+              },
+              {
+                whitespace: true,
+                min: 3,
+                message: "Please enter more than 2 characters",
+              },
+            ]}
+          >
             <Input
               name="name"
               value={location.name}
@@ -58,9 +84,17 @@ function Update() {
               className="Modal-input"
             />
           </Form.Item>
-          <Form.Item label="Address">
+          <Form.Item
+            label="Address"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your address",
+              },
+            ]}
+          >
             <Input
-              address="address"
+              name="address"
               value={location.address}
               onChange={(e) =>
                 setLocation({ ...location, address: e.target.value })
@@ -68,7 +102,19 @@ function Update() {
               className="Modal-input"
             />
           </Form.Item>
-          <Form.Item label="Latitude">
+          <Form.Item
+            label="Latitude"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your latitude",
+              },
+              {
+                pattern: /^[1-9]\d*$/,
+                message: "Latitude must contain only numbers",
+              },
+            ]}
+          >
             <Input
               latitude="latitude"
               value={location.latitude}
@@ -78,12 +124,24 @@ function Update() {
               className="Modal-input"
             />
           </Form.Item>
-          <Form.Item label="Longtitude">
+          <Form.Item
+            label="Longitude"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your longitude",
+              },
+              {
+                pattern: /^[1-9]\d*$/,
+                message: "Latitude must contain only numbers",
+              },
+            ]}
+          >
             <Input
-              longtitude="longtitude"
-              value={location.longtitude}
+              name="longitude"
+              value={location.longitude}
               onChange={(e) =>
-                setLocation({ ...location, longtitude: e.target.value })
+                setLocation({ ...location, longitude: e.target.value })
               }
               className="Modal-input"
             />

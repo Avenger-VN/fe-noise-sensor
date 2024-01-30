@@ -1,11 +1,11 @@
 import { Button, Typography } from "antd"
 import { useEffect, useState } from "react"
-import axios from "axios"
 import { Link } from "react-router-dom"
-import { message } from "antd"
 import SensorDataTable from "../../components/sensorData/SensorDataTable"
 import { PlusOutlined } from "@ant-design/icons"
-import { getSensorData } from "../../api/sensor-data"
+
+import { deleteSensorData, getSensorDatas } from "../../api"
+import { notification } from "antd"
 
 const { Title } = Typography
 
@@ -13,10 +13,9 @@ const SensorData = () => {
   const [sensordata, setsensordata] = useState([])
 
   const fetchData = () => {
-    getSensorData()
-      .then((res) => {
-        setsensordata(res.data.data)
-      })
+    getSensorDatas({ limit: 10, page: 1 })
+      .then((res) => setsensordata(res.data.data.sensorData))
+
       .catch((err) => console.log(err))
   }
 
@@ -25,10 +24,12 @@ const SensorData = () => {
   }, [])
 
   const handleDelete = (record) => {
-    axios
-      .delete(`http://localhost:3030/locations/${record.id}`)
+    deleteSensorData(`${record.id}`)
       .then(() => {
-        message.success("Delete success")
+        notification.success({
+          message: "Delete success",
+          duration: 1,
+        })
         fetchData()
       })
       .catch((err) => console.log(err))

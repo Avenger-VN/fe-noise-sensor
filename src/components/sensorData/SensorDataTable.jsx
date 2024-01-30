@@ -6,6 +6,11 @@ const SensorDataTable = ({ data, handleDelete }) => {
   const columns = [
     // Các cột dữ liệu ở đây
     {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
       title: "Sensor ID",
       dataIndex: "sensorID",
       key: "sensorID",
@@ -47,7 +52,7 @@ const SensorDataTable = ({ data, handleDelete }) => {
       render: (space, record) => (
         <div>
           <div>
-            <Link to={`/location/${record.id}`}>
+            <Link to={`/sensordata/${record.id}`}>
               <Button>Edit</Button>
             </Link>
             <Popconfirm

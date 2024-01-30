@@ -3,7 +3,9 @@ import LocationTable from "../../components/location/LocationTable"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { PlusOutlined } from "@ant-design/icons"
-import { getLocations } from "../../api/location"
+
+import { deleteLocation, getLocations } from "../../api"
+import { notification } from "antd"
 
 const { Title } = Typography
 
@@ -20,7 +22,17 @@ const Location = () => {
     fetchData()
   }, [])
 
-  const handleDelete = () => {}
+  const handleDelete = (record) => {
+    deleteLocation(`${record.id}`)
+      .then(() => {
+        notification.success({
+          message: "Delete success",
+          duration: 1,
+        })
+        fetchData()
+      })
+      .catch((err) => console.log(err))
+  }
   return (
     <div>
       <div>

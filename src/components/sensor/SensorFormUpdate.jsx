@@ -13,7 +13,6 @@ const UpdateSensor = ({ form, onFinish, data, setData }) => {
       <div className="All-AddUser-Form">
         <Form className="AddUser-Form" form={form} onFinish={onFinish}>
           <Form.Item
-            name="id"
             label="ID"
             rules={[
               {
@@ -27,10 +26,10 @@ const UpdateSensor = ({ form, onFinish, data, setData }) => {
               className="Modal-input"
               placeholder="Type your id"
               value={data.id}
+              disabled
             />
           </Form.Item>
           <Form.Item
-            name="name"
             label="Name"
             rules={[
               {
@@ -48,6 +47,7 @@ const UpdateSensor = ({ form, onFinish, data, setData }) => {
               name="name"
               className="Modal-input"
               placeholder="Type your name"
+              value={data.name}
               onChange={(e) => setData({ ...data, name: e.target.value })}
             />
           </Form.Item>
@@ -63,13 +63,13 @@ const UpdateSensor = ({ form, onFinish, data, setData }) => {
                 message: "Please enter more than 2 characters",
               },
             ]}
-            name="description"
             label="Description"
           >
             <Input
-              description="description"
+              name="description"
               className="Modal-input"
               placeholder="Type your description"
+              value={data.description}
               onChange={(e) =>
                 setData({ ...data, description: e.target.value })
               }
@@ -83,13 +83,13 @@ const UpdateSensor = ({ form, onFinish, data, setData }) => {
                 message: "Please enter your type",
               },
             ]}
-            name="type"
             label="Type"
           >
             <Input
-              type="type"
+              name="type"
               className="Modal-input"
               placeholder="Type your type"
+              value={data.type}
               onChange={(e) => setData({ ...data, type: e.target.value })}
             />
           </Form.Item>

@@ -4,26 +4,38 @@ import { useEffect, useState } from "react"
 import SensorTable from "../../components/sensor/SensorTable"
 import { Link } from "react-router-dom"
 import { PlusOutlined } from "@ant-design/icons"
-import { getSensors } from "../../api/sensor"
+
+import { deleteSensor, getSensors } from "../../api"
+import { notification } from "antd"
 
 const { Title } = Typography
 
 const Sensor = () => {
   const [sensor, setSensor] = useState([])
 
-  const fetchData = () => {
+  const fecthData = () => {
     getSensors({ limit: 10, page: 1 })
-      .then((res) => {
-        setSensor(res.data.data.sensor)
-      })
+      .then((res) => setSensor(res.data.data.sensor))
+
       .catch((err) => console.log(err))
   }
 
   useEffect(() => {
-    fetchData()
+    fecthData()
   }, [])
 
-  const handleDelete = () => {}
+  const handleDelete = (record) => {
+    deleteSensor(`${record.id}`)
+      .then(() => {
+        notification.success({
+          message: "Delete success",
+          duration: 1,
+        })
+        fecthData()
+      })
+      .catch((err) => console.log(err))
+  }
+
   return (
     <div>
       <div>

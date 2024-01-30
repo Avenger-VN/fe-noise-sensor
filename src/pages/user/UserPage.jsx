@@ -4,14 +4,15 @@ import UserTable from "../../components/user/UserTable"
 import { Link } from "react-router-dom"
 import { Typography } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
-import { getUsers } from "../../api"
+import { deleteUser, getUsers } from "../../api"
+import { notification } from "antd"
 
 const { Title } = Typography
 export default function User() {
   const [user, setUser] = useState([])
 
   const fetchData = () => {
-    getUsers({ limit: 1, page: 1 })
+    getUsers({ limit: 10, page: 1 })
       .then((res) => {
         setUser(res.data.data.users)
       })
@@ -21,10 +22,14 @@ export default function User() {
   useEffect(() => {
     fetchData()
   }, [])
-
   const handleDelete = (record) => {
-    const filteredData = user.filter((item) => item.id !== record.id)
-    setUser(filteredData)
+    deleteUser(`${record.id}`).then(() => {
+      notification.success({
+        message: "Delete success",
+        duration: 1,
+      })
+      fetchData()
+    })
   }
 
   return (
