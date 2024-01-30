@@ -8,7 +8,6 @@ import { PlusOutlined } from "@ant-design/icons"
 import { deleteSensor, getSensors } from "../../api"
 import { notification } from "antd"
 
-
 const { Title } = Typography
 
 const Sensor = () => {
@@ -22,7 +21,7 @@ const Sensor = () => {
   }
 
   useEffect(() => {
-    fetchData()
+    fecthData()
   }, [])
 
   const handleDelete = (record) => {
