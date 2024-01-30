@@ -6,6 +6,7 @@ import {
   AimOutlined,
   DatabaseOutlined,
   NotificationOutlined,
+  LineChartOutlined,
 } from "@ant-design/icons"
 import { Menu } from "antd"
 import { useNavigate } from "react-router-dom"
@@ -13,11 +14,9 @@ import { useNavigate } from "react-router-dom"
 function SideMenu() {
   const navigate = useNavigate()
   return (
-    <div
-      className="SideMenu"
-      style={{ borderRight: "1px solid rgba(0,0,0,0.15)" }}
-    >
+    <div className="SideMenu">
       <Menu
+        style={{ borderInlineEnd: "none" }}
         onClick={(item) => {
           //item.key
           navigate(item.key)
@@ -27,6 +26,11 @@ function SideMenu() {
             label: "Home",
             icon: <HomeOutlined />,
             key: "/",
+          },
+          {
+            label: "Report",
+            icon: <LineChartOutlined />,
+            key: "/report",
           },
           {
             label: "Statistical",

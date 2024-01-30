@@ -8,7 +8,7 @@ const AddFormLocation = ({ onFinish, setInputData, inputData }) => {
         <Title level={3}>Create Location</Title>
       </div>
       <div className="All-AddUser-Form">
-        <Form onFinish={onFinish}>
+        <Form onFinish={onFinish} className="AddUser-Form">
           <Form.Item
             label="Name"
             name="name"

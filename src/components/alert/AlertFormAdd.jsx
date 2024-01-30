@@ -9,7 +9,7 @@ const AlertFormAdd = ({ onFinish, setInputData, inputData }) => {
         <Title level={3}>Create Alert</Title>
       </div>
       <div className="All-AddUser-Form">
-        <Form onFinish={onFinish}>
+        <Form onFinish={onFinish} className="AddUser-Form">
           <Form.Item
             label="Sensor ID"
             name="sensorID"

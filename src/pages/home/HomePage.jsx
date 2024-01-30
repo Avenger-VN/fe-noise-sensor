@@ -32,7 +32,9 @@ export default function Home() {
     <div>
       <div className="Home-Start">
         <div className="Home-Start-Content">
-          <Typography.Title level={4}>Noise Pollution</Typography.Title>
+          <Typography.Title level={4} className="home-name">
+            Noise Pollution
+          </Typography.Title>
           <Space direction="horizontal">
             <Statistical
               icon={

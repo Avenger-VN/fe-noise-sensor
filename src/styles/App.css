@@ -13,20 +13,86 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 40px 4px 12px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 4px 20px 4px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.header-avatar {
+  margin-left: 20px;
+}
+.header-name {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.header-icon {
+  font-size: 10px;
+  padding-top: 2px;
+  padding-left: 2px;
+  color: rgba(0, 0, 0, 0.45);
+}
+.dropdown-profile {
+  position: absolute;
+  z-index: 1000;
+  overflow: none;
+  background-color: white;
+  width: 140px;
+  right: 0.5rem;
+  top: 3.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.dropdown-profile ul {
+  width: 100%;
+  padding-inline-start: 0;
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+.dropdown-profile li {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 13px;
+  text-align: center;
+  line-height: 20px;
+  list-style-type: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.dropdown-profile li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #337ab7;
+}
+.dropdown-profile::before {
+  content: "";
+  position: absolute;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  right: 1.1rem;
+  top: -0.7rem;
+  transform: rotate(45deg);
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.dropdown-profile a {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 15px;
 }
 
 .SideMenu {
   width: 220px;
   min-height: calc(100vh - 60px);
 }
+
 .SideMenuAndPageContent {
   display: flex;
 }
 .PageContent {
   padding: 24px 16px;
   flex: 1;
+  background-color: rgba(0, 0, 0, 0.08);
 }
 
 .Home-Start {
@@ -36,11 +102,15 @@
   padding: 20px 10px 4px 0px;
 }
 .Home-Start-Content {
-  padding: 20px 0px 0px 100px;
+  padding: 0px 0px 0px 100px;
+}
+.home-name {
+  margin-top: 0;
 }
 
 .Home-calendar {
   width: 300px;
+  height: 100%;
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 8px;
 }
@@ -76,13 +146,13 @@
   padding-left: 20px;
 }
 .All-AddUser-Form {
-  width: 1097px;
+  width: 100%;
   display: flex;
   justify-content: center;
   justify-items: center;
 }
 .AddUser-Form {
-  width: 470px;
+  width: 41%;
 }
 
 .ant-form-item-required {
@@ -100,14 +170,33 @@
   float: right;
 }
 
-.Table-Style {
-}
-.Table-with {
-}
 .Table-Delete {
   margin-left: 10px;
 }
 .All-Add-style {
   float: right;
   margin-bottom: 16px;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.table-title {
+  height: 4rem;
+}
+
+.report-table td,
+.report-table th {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+}
+.report-table-date-value {
+  width: 60px;
 }
