@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import SensorDataTable from "../../components/sensorData/SensorDataTable"
 import { PlusOutlined } from "@ant-design/icons"
+
 import { deleteSensorData, getSensorDatas } from "../../api"
 import { notification } from "antd"
 
@@ -14,6 +15,7 @@ const SensorData = () => {
   const fetchData = () => {
     getSensorDatas({ limit: 10, page: 1 })
       .then((res) => setsensordata(res.data.data.sensorData))
+
       .catch((err) => console.log(err))
   }
 

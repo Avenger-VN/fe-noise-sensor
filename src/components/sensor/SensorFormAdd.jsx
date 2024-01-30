@@ -1,10 +1,15 @@
+import { useState } from "react"
 import React from "react"
-import { Form, Input, Button } from "antd"
+import { Form, Button } from "antd"
 import { Typography } from "antd"
 import { Link } from "react-router-dom"
+import InputField from "./components/input-field"
 const { Title } = Typography
 
-const AddFormSensor = ({ form, onFinish, data, setData }) => {
+const AddFormSensor = ({ onFinish }) => {
+  const [data, setData] = useState([])
+  const [form] = Form.useForm()
+
   return (
     <div>
       <div className="Title-CreateUser">
@@ -12,7 +17,7 @@ const AddFormSensor = ({ form, onFinish, data, setData }) => {
       </div>
       <div className="All-AddUser-Form">
         <Form className="AddUser-Form" form={form} onFinish={onFinish}>
-          <Form.Item
+          <InputField
             name="name"
             label="Name"
             rules={[
@@ -26,15 +31,13 @@ const AddFormSensor = ({ form, onFinish, data, setData }) => {
                 message: "Please enter more than 2 characters",
               },
             ]}
-          >
-            <Input
-              name="name"
-              className="Modal-input"
-              placeholder="Type your name"
-              onChange={(e) => setData({ ...data, name: e.target.value })}
-            />
-          </Form.Item>
-          <Form.Item
+            placeholder="Type your name"
+            onChange={(e) => setData({ ...data, name: e.target.value })}
+          />
+
+          <InputField
+            name="description"
+            label="Description"
             rules={[
               {
                 required: true,
@@ -46,36 +49,26 @@ const AddFormSensor = ({ form, onFinish, data, setData }) => {
                 message: "Please enter more than 2 characters",
               },
             ]}
-            name="description"
-            label="Description"
-          >
-            <Input
-              description="description"
-              className="Modal-input"
-              placeholder="Type your description"
-              onChange={(e) =>
-                setData({ ...data, description: e.target.value })
-              }
-            />
-          </Form.Item>
-
-          <Form.Item
+            placeholder="Type your name"
+            onChange={(e) => setData({ ...data, description: e.target.value })}
+          />
+          <InputField
+            name="type"
+            label="Type"
             rules={[
               {
                 required: true,
-                message: "Please enter your type",
+                message: "Please enter your last description",
+              },
+              {
+                whitespace: true,
+                min: 3,
+                message: "Please enter more than 2 characters",
               },
             ]}
-            name="type"
-            label="Type"
-          >
-            <Input
-              type="type"
-              className="Modal-input"
-              placeholder="Type your type"
-              onChange={(e) => setData({ ...data, type: e.target.value })}
-            />
-          </Form.Item>
+            placeholder="Type your type"
+            onChange={(e) => setData({ ...data, type: e.target.value })}
+          />
 
           <Form.Item>
             <div className="Btn-Back-Save">

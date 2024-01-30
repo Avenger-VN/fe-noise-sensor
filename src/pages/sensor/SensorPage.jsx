@@ -4,22 +4,27 @@ import { useEffect, useState } from "react"
 import SensorTable from "../../components/sensor/SensorTable"
 import { Link } from "react-router-dom"
 import { PlusOutlined } from "@ant-design/icons"
+
 import { deleteSensor, getSensors } from "../../api"
 import { notification } from "antd"
+
 
 const { Title } = Typography
 
 const Sensor = () => {
   const [sensor, setSensor] = useState([])
+
   const fecthData = () => {
     getSensors({ limit: 10, page: 1 })
       .then((res) => setSensor(res.data.data.sensor))
+
       .catch((err) => console.log(err))
   }
 
   useEffect(() => {
-    fecthData()
+    fetchData()
   }, [])
+
   const handleDelete = (record) => {
     deleteSensor(`${record.id}`)
       .then(() => {
@@ -31,6 +36,7 @@ const Sensor = () => {
       })
       .catch((err) => console.log(err))
   }
+
   return (
     <div>
       <div>

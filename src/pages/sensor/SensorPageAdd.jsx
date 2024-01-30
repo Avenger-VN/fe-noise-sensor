@@ -1,5 +1,5 @@
-import { useState } from "react"
 import AddFormSensor from "../../components/sensor/SensorFormAdd"
+
 import { Form } from "antd"
 import { useNavigate } from "react-router-dom"
 import { createSensor } from "../../api/path"
@@ -11,6 +11,7 @@ const SensorAdd = () => {
   const navigate = useNavigate()
   const onFinish = () => {
     createSensor("create-sensor", inputData)
+
       .then(() => {
         notification.success({
           message: "Create success",
@@ -25,16 +26,9 @@ const SensorAdd = () => {
       })
   }
   return (
-    <div>
-      <div>
-        <AddFormSensor
-          form={form}
-          onFinish={onFinish}
-          data={inputData}
-          setData={setInputData}
-        />
-      </div>
-    </div>
+    <>
+      <AddFormSensor onFinish={onFinish} />
+    </>
   )
 }
 export default SensorAdd

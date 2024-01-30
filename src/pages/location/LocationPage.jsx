@@ -3,6 +3,7 @@ import LocationTable from "../../components/location/LocationTable"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { PlusOutlined } from "@ant-design/icons"
+
 import { deleteLocation, getLocations } from "../../api"
 import { notification } from "antd"
 
@@ -17,10 +18,10 @@ const Location = () => {
       })
       .catch((err) => console.log(err))
   }
-
   useEffect(() => {
     fetchData()
   }, [])
+
   const handleDelete = (record) => {
     deleteLocation(`${record.id}`)
       .then(() => {
